@@ -38,13 +38,23 @@
 			<!--
 				例子：<img src="img/xxxxxx.png" alt="" />
 			-->
-			<video id="video1" width="800" height="" autoplay="autoplay" loop="loop">
+			<video id="video1" muted width="800" height="" autoplay="autoplay" loop="loop">
 				<source src="img/miumiu-video-1.mov" type="video/mp4"></source>
 				<source src="img/miumiu-video-1.mov" type="video/ogg"></source>
 				<source src="img/miumiu-video-1.mov" type="video/webm"></source>
 				<object width="" height="" type="application/x-shockwave-flash" data="img/miumiu-video-1.mov">
 					<param name="movie" value="img/miumiu-video-1.mov" />
 					<param name="flashvars" value="autostart=true&amp;file=img/miumiu-video-1.mov" />
+				</object> 当前浏览器不支持 video直接播放，点击这里下载视频：
+				<a href="">下载视频</a>
+			</video>
+			<video id="video1" muted width="800" height="" autoplay="autoplay" loop="loop">
+				<source src="img/miumiu-video-0.mov" type="video/mp4"></source>
+				<source src="img/miumiu-video-0.mov" type="video/ogg"></source>
+				<source src="img/miumiu-video-0.mov" type="video/webm"></source>
+				<object width="" height="" type="application/x-shockwave-flash" data="img/miumiu-video-0.mov">
+					<param name="movie" value="img/miumiu-video-0.mov" />
+					<param name="flashvars" value="autostart=true&amp;file=img/miumiu-video-0.mov" />
 				</object> 当前浏览器不支持 video直接播放，点击这里下载视频：
 				<a href="">下载视频</a>
 			</video>
@@ -65,6 +75,9 @@
 				视频复制上面的整个例子，然后把所有img/miumiu-video-1.mov替换成你要的视频如：img/aaa.mp4
 			-->
 		</div>
+		
+		
+		<!--js-->
 		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 		<script>
 			var videoIndex = 1;
@@ -72,7 +85,8 @@
 			for (var i = 0; i < 100; i++) {
 				try{
 					var videoId = 'video' + videoIndex.toString();
-					var videoEl = document.getElementById(videoId).play();
+					var videoEl = document.getElementById(videoId);
+					videoEl.play();
 					autoPlay();
 					videoIndex++;
 				}catch(e){
