@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>miumiu</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			div.box {
+				width: 75%;
+				margin: 0 auto;
+				overflow: hidden;
+			}
+			
+			img {
+				width: 100%;
+				display: block;
+				padding: 0;
+				margin: 20px 0;
+			}
+			
+			video {
+				width: 100%;
+				display: block;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box">
+			<img src="img/miumiu1.png" alt="" />
+			<img src="img/miumiu2.png" alt="" />
+			<!--
+				例子：<img src="img/xxxxxx.png" alt="" />
+			-->
+			<video id="video1" width="800" height="" autoplay="autoplay" loop="loop">
+				<source src="img/miumiu-video-1.mov" type="video/mp4"></source>
+				<source src="img/miumiu-video-1.mov" type="video/ogg"></source>
+				<source src="img/miumiu-video-1.mov" type="video/webm"></source>
+				<object width="" height="" type="application/x-shockwave-flash" data="img/miumiu-video-1.mov">
+					<param name="movie" value="img/miumiu-video-1.mov" />
+					<param name="flashvars" value="autostart=true&amp;file=img/miumiu-video-1.mov" />
+				</object> 当前浏览器不支持 video直接播放，点击这里下载视频：
+				<a href="">下载视频</a>
+			</video>
+
+			<!--
+				例子：
+				<video width="800" height="" autoplay="autoplay" loop="loop">
+					<source src="img/miumiu-video-1.mov" type="video/mp4"></source>
+					<source src="img/miumiu-video-1.mov" type="video/ogg"></source>
+					<source src="img/miumiu-video-1.mov" type="video/webm"></source>
+					<object width="" height="" type="application/x-shockwave-flash" data="img/miumiu-video-1.mov">
+						<param name="movie" value="img/miumiu-video-1.mov" />
+						<param name="flashvars" value="autostart=true&amp;file=img/miumiu-video-1.mov" />
+					</object>
+					当前浏览器不支持 video直接播放，点击这里下载视频： <a href="">下载视频</a>
+				</video>
+				
+				视频复制上面的整个例子，然后把所有img/miumiu-video-1.mov替换成你要的视频如：img/aaa.mp4
+			-->
+		</div>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script>
+			var videoIndex = 1;
+			
+			for (var i = 0; i < 100; i++) {
+				try{
+					var videoId = 'video' + videoIndex.toString();
+					var videoEl = document.getElementById(videoId).play();
+					autoPlay();
+					videoIndex++;
+				}catch(e){
+					console.log(e);
+					break
+				}
+				
+			}
+			function autoPlay() {
+				//一般情况下，这样就可以自动播放了，但是一些奇葩iPhone机不可以 
+				document.getElementById('car_audio').play();
+				//必须在微信Weixin JSAPI的WeixinJSBridgeReady才能生效 
+				document.addEventListener("WeixinJSBridgeReady", function() {
+					document.getElementById('car_audio').play();
+					document.getElementById('video').play();
+				}, false);
+			}
+		</script>
+	</body>
+
+</html>
